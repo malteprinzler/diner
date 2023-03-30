@@ -1,0 +1,12 @@
+executable = /bin/bash
+arguments = "scripts/write_to_multiface.sh"
+request_cpus = 3
+request_memory = 22000
+request_gpus = 3
+request_disk = 100G
+requirements = (TARGET.CUDACapability >= 7.0) && (TARGET.CUDAGlobalMemoryMb >=40000)
+log_root = /work/mprinzler/TransMVSNet/logfiles/$(ClusterId)_write_multiface
+error = $(log_root).err
+output = $(log_root).out
+log = $(log_root).log
+queue

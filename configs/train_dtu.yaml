@@ -1,0 +1,86 @@
+logger:
+  kwargs:
+    save_dir: "outputs/dtu/own_trainings"
+    version: "DINER_own_training"
+
+data:
+  train:
+    dataset:
+      module: src.data.dtu.DTUDataSet
+      kwargs:
+        root: data/DTU
+        depth_fname: TransMVSNet
+    dataloader:
+      kwargs:
+        shuffle: true
+        batch_size: 4
+        num_workers: 4
+
+  val:
+    dataset:
+      module: src.data.dtu.DTUDataSet
+      kwargs:
+        root: data/DTU
+        depth_fname: TransMVSNet
+    dataloader:
+      kwargs:
+        shuffle: false
+        batch_size: 4
+        num_workers: 4
+
+nerf:
+  module: src.models.pixelnerf.PixelNeRF
+  kwargs:
+    encoder_conf:
+      module: src.models.image_encoder.SpatialEncoder
+      kwargs:
+        image_padding: 64
+        padding_pe: 4
+    poscode_conf:
+      kwargs:
+        num_freqs: 6
+        freq_factor: 6.28
+        include_input: true
+    mlp_fine_conf:
+      module: src.models.resnetfc.ResnetFC
+      kwargs:
+        n_blocks: 5
+        d_hidden: 512
+        combine_layer: 3
+        combine_type: average
+
+renderer:
+  module: src.models.nerf_renderer.NeRFRendererDGS
+  kwargs:
+    n_samples: 40
+    n_depth_candidates: 1000
+    n_gaussian: 15
+    white_bkgd: False
+
+
+optimizer:
+  kwargs:
+    w_vgg: 0.1
+    w_antibias: 1.
+    ray_batch_size: 128
+    img_log_interval: 10000
+    lr: 1e-4 # 1e-4
+
+trainer:
+  # ckpt_path:
+  kwargs:
+    enable_checkpointing: True
+    gpus:
+      - 0
+    val_check_interval: 30000
+    log_every_n_steps: 1000
+    strategy: ddp
+    limit_val_batches: 10
+    check_val_every_n_epoch: null
+    max_epochs: -1
+
+checkpointing:
+  kwargs:
+    every_n_train_steps: 10000
+    save_last: False
+    save_top_k: 1

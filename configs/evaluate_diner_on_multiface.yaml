@@ -1,0 +1,13 @@
+data:
+  val:
+    dataset:
+      module: src.data.multiface.MultiFaceDataset
+      kwargs:
+        root: data/MULTIFACE
+        depth_suffix: _TransMVSNet.png
+        depth_std_suffix: _TransMVSNet_conf.png
+    dataloader:
+      kwargs:
+        shuffle: False
+        batch_size: 1
+        num_workers: 1

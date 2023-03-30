@@ -1,0 +1,14 @@
+executable = /bin/bash
+arguments = "deps/facescape_preprocessing/process_dataset.sh $(SubjectID)"
+request_cpus = 1
+request_disk = 300G
+request_memory = 128000
+log_root = /outputs/facescape/preprocess_logs/process_facescape_$(ClusterId).$(Process)_$(SubjectID)
+error = $(log_root).err
+output = $(log_root).out
+log = $(log_root).log
+concurrency_limits = user.facescape:10
+should_transfer_files = yes
+when_to_transfer_output = ON_EXIT_OR_EVICT
+remote_initialdir = $ENV(PWD)
+queue SubjectID from deps/facescape_preprocessing/incomplete_subjects.txt

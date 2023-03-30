@@ -1,0 +1,12 @@
+executable = /bin/bash
+arguments = "scripts/write_to_facescape.sh"
+request_cpus = 7
+request_memory = 70000
+request_gpus = 7
+request_disk = 100G
+requirements = TARGET.CUDADeviceName=="NVIDIA GeForce RTX 2080 Ti"
+log_root = /work/mprinzler/TransMVSNet/logfiles/$(ClusterId)
+error = $(log_root).err
+output = $(log_root).out
+log = $(log_root).log
+queue

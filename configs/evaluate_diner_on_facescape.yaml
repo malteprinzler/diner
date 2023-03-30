@@ -1,0 +1,15 @@
+data:
+  val:
+    dataset:
+      module: src.data.facescape.FacescapeDataSet
+      kwargs:
+        root: data/FACESCAPE_PROCESSED
+        range_vert: 30
+        range_hor: 45
+        slide_range: 40
+        depth_fname: depth_TransMVSNet.png
+    dataloader:
+      kwargs:
+        shuffle: False
+        batch_size: 1
+        num_workers: 1

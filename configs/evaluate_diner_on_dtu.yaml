@@ -1,0 +1,12 @@
+data:
+  val:
+    dataset:
+      module: src.data.dtu.DTUDataSet
+      kwargs:
+        root: data/DTU
+        depth_fname: TransMVSNet
+    dataloader:
+      kwargs:
+        shuffle: False
+        batch_size: 1
+        num_workers: 1

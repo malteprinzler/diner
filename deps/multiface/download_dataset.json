@@ -1,0 +1,13 @@
+{
+  "entity": [
+    "5067077"
+  ],
+  "image": true,
+  "mesh": true,
+  "texture": false,
+  "metadata": true,
+  "audio": false,
+  "expression": [
+    "SEN_approach_your_interview_with_statuesque_composure"
+  ]
+}

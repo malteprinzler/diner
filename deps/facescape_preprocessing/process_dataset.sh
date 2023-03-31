@@ -3,6 +3,8 @@ cp venv.zip /tmp
 unzip /tmp/venv.zip -d /tmp/
 source /tmp/venv/bin/activate
 export PYOPENGL_PLATFORM=osmesa
+export MESA_SHADER_CACHE_DIR=/tmp/.cache
+
 in_subject_nr=$1
 out_subject_nr=$(printf "%03d" $in_subject_nr)
 in_dir="data/FACESCAPE_RAW/$in_subject_nr"

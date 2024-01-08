@@ -84,7 +84,7 @@ class FacescapeDataSet(torch.utils.data.Dataset):
             print("creating metas")
             val_subjects = np.loadtxt(meta_dir/"publishable_list_v1.txt", delimiter=",").astype(int)
             val_subjects = [f"{i:03d}" for i in val_subjects]
-            train_subjects = sorted([d.name for d in self.data_dir.iterdir()])
+            train_subjects = sorted([d.name for d in self.data_dir.iterdir() if d.name not in val_subjects])
             subjects = train_subjects if self.stage == "train" else val_subjects
             range_hor_rd = self.range_hor / 180 * np.pi
             range_vert_rd = self.range_vert / 180 * np.pi

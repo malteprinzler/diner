@@ -48,7 +48,7 @@ diner (repository root)
 
 #### 1) Dataset Download
 
-- Download the preprocessed [DTU training data](https://drive.google.com/file/d/1eDjh-_bxKKnEuz5h-HXS7EDJn59clx6V/view) and [Depth_raw](https://drive.google.com/file/d/1eDjh-_bxKKnEuz5h-HXS7EDJn59clx6V/view) from the original [MVSNet repo](https://github.com/YoYo000/MVSNet) and unzip them into `data/DTU`. Use the files from `Depths_raw.zip` to overwrite the files obtained from the dtu_training.rar. The folder structure after unzipping should look like the following:
+- Download the preprocessed [DTU training data](https://drive.google.com/file/d/1eDjh-_bxKKnEuz5h-HXS7EDJn59clx6V/view) and [Depth_raw](https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/cascade-stereo/CasMVSNet/dtu_data/dtu_train_hr/Depths_raw.zip) from the original [MVSNet repo](https://github.com/YoYo000/MVSNet) and unzip them into `data/DTU`. Use the files from `Depths_raw.zip` to overwrite the files obtained from the dtu_training.rar. The folder structure after unzipping should look like the following:
     ```
     data/DTU (dataset root)
     |- Cameras
